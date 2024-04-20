@@ -16,6 +16,7 @@ function initializeData() {
     console.log('Data already exists in localStorage');
   }
 }
+ initializeData();
 
 // TASK: Get elements from the DOM
 const elements = {
@@ -29,9 +30,9 @@ const elements = {
   modalWindow: document.getElementById('new-task-modal-window'),
   editTaskModal: document.querySelector('.edit-task-modal-window')
   
-}
+};
 
-let activeBoard = ""
+let activeBoard = "";
 
 // Extracts unique board names from tasks
 // TASK: FIX BUGS
@@ -113,7 +114,7 @@ function refreshTasksUI() {
 // Style the active board by adding an active class
 // TASK: Fix Bugs
 function styleActiveBoard(boardName) {
-  document.querySelectorAll('.board-btn').foreach(btn => { 
+  document.querySelectorAll('.edit-board-btn').foreach(btn => { 
     
     if(btn.textContent === boardName) {
       btn.classList.add('active');
@@ -141,7 +142,7 @@ function addTaskToUI(task) {
   }
 
   const taskElement = document.createElement('div');
-  taskElement.className = 'edit-task-div'; // change class name
+  taskElement.className = 'edit-task-div'; // change class name OR task-div
   taskElement.textContent = task.title; // Modify as needed
   taskElement.setAttribute('data-task-id', task.id);
   
@@ -202,7 +203,9 @@ function addTask(event) {
 
   //Assign user input to the task object
     const task = {
-      
+      title : event[0],
+      task : event[1],      
+      status: event[2]
     };
     const newTask = createNewTask(task);
     if (newTask) {
@@ -216,6 +219,7 @@ function addTask(event) {
 
 
 function toggleSidebar(show) {
+
  
 }
 
