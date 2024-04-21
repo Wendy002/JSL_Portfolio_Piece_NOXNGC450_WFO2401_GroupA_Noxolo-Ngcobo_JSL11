@@ -1,7 +1,7 @@
 // TASK: import helper functions from utils
 // TASK: import initialData
-import { getTasks, createNewTask, putTask, deleteTask} from "./utils/taskFunctions";
-import { initialData } from "./initialData";
+import { getTasks, createNewTask, putTask, deleteTask} from "./utils/taskFunctions.js";
+import { initialData } from "./initialData.js";
 
 /*************************************************************************************************************************************************
  * FIX BUGS!!!
@@ -16,18 +16,18 @@ function initializeData() {
     console.log('Data already exists in localStorage');
   }
 }
- initializeData();
+initializeData();
 
 // TASK: Get elements from the DOM
 const elements = {
   headerBoardName : document.getElementById('header-board-name'),
-  columnDivs: document.querySelector('.column-div'),
+  columnDivs: document.querySelectorAll('.column-div'),
   filterDiv: document.getElementById('filterDiv'),
   hideSideBarBtn: document.getElementById('hide-side-bar-btn'),
   showSideBarBtn: document.getElementById('show-side-bar-btn'),
-  themeSwitch: document.getElementById('switch'),
+  themeSwitch: document.getElementById('label-checkbox-theme'),
   createNewTaskBtn: document.getElementById('create-task-btn'),
-  modalWindow: document.getElementById('new-task-modal-window'),
+  modalWindow: document.querySelector('.modal-window'),
   editTaskModal: document.querySelector('.edit-task-modal-window')
   
 };
@@ -53,7 +53,7 @@ function fetchAndDisplayBoardsAndTasks() {
 // Creates different boards in the DOM
 // TASK: Fix Bugs
 function displayBoards(boards) {
-  const boardsContainer = document.querySelector(".container"); // change id to 'container'
+  const boardsContainer = document.querySelector("#boards-nav-links-div"); // change id to 'container'
   boardsContainer.innerHTML = ''; // Clears the container ***
   boards.forEach(board => {
     const boardElement = document.createElement("button");
@@ -70,6 +70,11 @@ function displayBoards(boards) {
   });
 
 }
+const colTitles = {
+  todo: 'todo',
+  doing: "doing",
+  done: "done"
+};
 
 // Filters tasks corresponding to the board name and displays them on the DOM.
 // TASK: Fix Bugs
@@ -82,9 +87,10 @@ function filterAndDisplayTasksByBoard(boardName) {
   elements.columnDivs.forEach(column => {
     const status = column.getAttribute("data-status");
     // Reset column content while preserving the column title
+    const colTitle = colTitles[status];
     column.innerHTML = `<div class="column-head-div">
                           <span class="dot" id="${status}-dot"></span>
-                          <h4 class="columnHeader">${status.toUpperCase()}</h4>
+                          <h4 class="columnHeader">${colTitle.toUpperCase()}</h4>
                         </div>`;
 
     const tasksContainer = document.createElement("div");
@@ -114,7 +120,7 @@ function refreshTasksUI() {
 // Style the active board by adding an active class
 // TASK: Fix Bugs
 function styleActiveBoard(boardName) {
-  document.querySelectorAll('.edit-board-btn').foreach(btn => { 
+  document.querySelectorAll('.board-btn').foreach(btn => { 
     
     if(btn.textContent === boardName) {
       btn.classList.add('active');
@@ -142,7 +148,7 @@ function addTaskToUI(task) {
   }
 
   const taskElement = document.createElement('div');
-  taskElement.className = 'edit-task-div'; // change class name OR task-div
+  taskElement.className = 'task-div'; // change class name OR task-div
   taskElement.textContent = task.title; // Modify as needed
   taskElement.setAttribute('data-task-id', task.id);
   
