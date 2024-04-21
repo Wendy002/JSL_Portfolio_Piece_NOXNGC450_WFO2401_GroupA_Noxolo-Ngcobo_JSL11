@@ -228,10 +228,11 @@ function toggleSidebar(show) {
   const sidebar = document.getElementById('side-bar-div');
   if (show){
     sidebar.style.display = 'block'; // Show the sidebar
-    elements.showSideBarBtn.style.display ='none';
+    elements.showSideBarBtn.style.display ='none'; //hide the sidebar button
+
   } else{
     sidebar.style.display = 'none'; // hide the sidebar
-    elements.showSideBarBtn.style.display ='block';
+    elements.showSideBarBtn.style.display ='block'; //show the sidebar button
   }
 
 }
