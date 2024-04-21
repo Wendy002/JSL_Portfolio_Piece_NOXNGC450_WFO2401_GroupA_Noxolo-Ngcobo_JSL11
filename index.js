@@ -120,7 +120,7 @@ function refreshTasksUI() {
 // Style the active board by adding an active class
 // TASK: Fix Bugs
 function styleActiveBoard(boardName) {
-  document.querySelectorAll('.board-btn').foreach(btn => { 
+  document.querySelectorAll('.board-btn').forEach(btn => { 
     
     if(btn.textContent === boardName) {
       btn.classList.add('active');
@@ -209,9 +209,9 @@ function addTask(event) {
 
   //Assign user input to the task object
     const task = {
-      title : event[0],
-      task : event[1],      
-      status: event[2]
+      title : event.target[0].value,
+      task : event.target[1].value,      
+      status: event.target[2].value
     };
     const newTask = createNewTask(task);
     if (newTask) {
