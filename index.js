@@ -225,8 +225,15 @@ function addTask(event) {
 
 
 function toggleSidebar(show) {
+  const sidebar = document.getElementById('side-bar-div');
+  if (show){
+    sidebar.style.display = 'block'; // Show the sidebar
+    elements.showSideBarBtn.style.display ='none';
+  } else{
+    sidebar.style.display = 'none'; // hide the sidebar
+    elements.showSideBarBtn.style.display ='block';
+  }
 
- 
 }
 
 function toggleTheme() {
