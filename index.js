@@ -208,12 +208,12 @@ function addTask(event) {
   event.preventDefault(); 
 
   //Assign user input to the task object
-    // const task = {
-    //   taskTitle: event.target.tasktitle.value,
-    //   description: event.target.description.value,
-    //   currStatus: event.target.status.value
+    const task = {
+      taskTitle: event.target.tasktitle.value,
+      description: event.target.description.value,
+      currStatus: event.target.status.value
     
-    // };
+    };
     const newTask = createNewTask(task);
     if (newTask) {
       addTaskToUI(newTask);
