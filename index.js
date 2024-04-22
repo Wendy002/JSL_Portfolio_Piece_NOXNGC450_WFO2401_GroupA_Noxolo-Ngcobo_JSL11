@@ -25,7 +25,7 @@ const elements = {
   filterDiv: document.getElementById('filterDiv'),
   hideSideBarBtn: document.getElementById('hide-side-bar-btn'),
   showSideBarBtn: document.getElementById('show-side-bar-btn'),
-  themeSwitch: document.getElementById('label-checkbox-theme'),
+  themeSwitch: document.getElementById('switch'),
   createNewTaskBtn: document.getElementById('create-task-btn'),
   modalWindow: document.querySelector('.modal-window'),
   editTaskModal: document.querySelector('.edit-task-modal-window')
@@ -208,17 +208,18 @@ function addTask(event) {
   event.preventDefault(); 
 
   //Assign user input to the task object
-    const task = {
-      title : event.target[0].value,
-      task : event.target[1].value,      
-      status: event.target[2].value
-    };
+    // const task = {
+    //   taskTitle: event.target.tasktitle.value,
+    //   description: event.target.description.value,
+    //   currStatus: event.target.status.value
+    
+    // };
     const newTask = createNewTask(task);
     if (newTask) {
       addTaskToUI(newTask);
       toggleModal(false);
       elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
-      event.target.reset();
+      event.target.reset();  
       refreshTasksUI();
     }
 }
@@ -238,7 +239,14 @@ function toggleSidebar(show) {
 }
 
 function toggleTheme() {
- 
+  const isLightTheme = elements.themeSwitch.checked;
+  if (isLightTheme) {
+    localStorage.setItem('light-theme', 'enabled' ); // set to light mode
+  } else{
+    localStorage.setItem('light-theme','disabled'); // set back to default
+  }
+
+  document.body.classList.toggle('light-theme', isLightTheme); //Toggle the 'light-theme' class
 }
 
 
