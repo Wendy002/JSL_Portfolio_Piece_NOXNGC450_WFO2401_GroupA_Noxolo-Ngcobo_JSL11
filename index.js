@@ -255,13 +255,13 @@ function toggleTheme() {
 
 function openEditTaskModal(task) {
   // Set task details in modal inputs
-  const title = document.getElementById('edit-task-title-input').value;
-  const description = document.getElementById('edit-task-desc-input').value;
-  const status = document.getElementById('edit-select-status').value;
+  const title = document.getElementById('edit-task-title-input');
+  const description = document.getElementById('edit-task-desc-input');
+  const status = document.getElementById('edit-select-status');
 
-  title = task.title;
-  description= task.description;
-  status = task.status;
+  title.value = task.title;
+  description.value= task.description;
+  status.value = task.status;
 
   // Get button elements from the task modal
   const saveTaskChangesBtn = document.getElementById('save-task-changes-btn');
@@ -293,6 +293,7 @@ function saveTaskChanges(taskId) {
 
   // Create an object with the updated task details
   const updatedTask = {
+    id: taskId,
     title: updatedTitleInput,
     description: updatedDescriptionInput,
     status: updatedStatusInput
