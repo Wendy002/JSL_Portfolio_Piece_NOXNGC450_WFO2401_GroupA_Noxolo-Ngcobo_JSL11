@@ -217,7 +217,7 @@ function addTask(event) {
 
       "title":  document.getElementById('title-input').value,
       "description": document.getElementById('desc-input').value,
-      "status": getElementById('select-status').value,
+      "status": document.getElementById('select-status').value,
       "board": elements.headerBoardName.textContent
     };
 
