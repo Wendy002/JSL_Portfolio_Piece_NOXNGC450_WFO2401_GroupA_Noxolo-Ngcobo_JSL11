@@ -222,7 +222,7 @@ function addTask(event) {
       toggleModal(false);
       elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
       event.target.reset();  
-      refreshTasksUI();
+      refreshTasksUI(); // refresh user interface
     }
 }
 
@@ -275,8 +275,8 @@ function openEditTaskModal(task) {
   // Delete task using a helper function and close the task modal
   deleteTaskBtn.addEventListener('click', ()=>{
     deleteTask(task.id);
-    toggleModal(false, elements.editTaskModal); //close modal
-    refreshTasksUI();
+    elements.editTaskModal.style.display = 'none'; //close modal
+    refreshTasksUI(); // refresh user interface
     
 
   });
