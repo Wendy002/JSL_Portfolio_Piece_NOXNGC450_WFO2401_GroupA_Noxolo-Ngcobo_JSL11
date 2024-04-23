@@ -270,9 +270,6 @@ function openEditTaskModal(task) {
   // Call saveTaskChanges upon click of Save Changes button
   saveTaskChangesBtn.addEventListener('click', ()=>{
     saveTaskChanges(task.id);
-    toggleModal(false, elements.editTaskModal); // close modal
-    refreshTasksUI();
-    
   });
 
   // Delete task using a helper function and close the task modal
@@ -289,16 +286,24 @@ function openEditTaskModal(task) {
 
 function saveTaskChanges(taskId) {
   // Get new user inputs
+  const updatedTitleInput = document.getElementById('edit-task-title-input').value;
+  const updatedDescriptionInput = document.getElementById('edit-task-desc-input').value;
+  const updatedStatusInput = document.getElementById('edit-select-status').value;
   
 
   // Create an object with the updated task details
+  const updatedTask = {
+    title: updatedTitleInput,
+    description: updatedDescriptionInput,
+    status: updatedStatusInput
+  }
 
 
-  // Update task using a hlper functoin
- 
+  // Update task using a helper functoin
+  putTask(taskId,updatedTask);
 
   // Close the modal and refresh the UI to reflect the changes
-
+  toggleModal(false, elements.editTaskModal);
   refreshTasksUI();
 }
 
