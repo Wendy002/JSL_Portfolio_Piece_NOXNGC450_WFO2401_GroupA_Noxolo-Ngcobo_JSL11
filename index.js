@@ -28,7 +28,7 @@ const elements = {
   themeSwitch: document.getElementById('switch'),
   addNewTaskBtn: document.getElementById('add-new-task-btn'),
   createTaskBtn: document.getElementById('createNewTaskBtn'),
-  modalWindow: document.querySelector('.modal-window'),
+  modalWindow: document.getElementById('new-task-modal-window'),
   editTaskModal: document.querySelector('.edit-task-modal-window')
   
 };
@@ -190,7 +190,7 @@ function setupEventListeners() {
   });
 
   //create task button 
-  
+  //elements.createTaskBtn.addEventListener('click', ()=>{})
 
   // Add new task form submission event listener
   elements.modalWindow.addEventListener('submit',  (event) => {
@@ -212,12 +212,15 @@ function addTask(event) {
   event.preventDefault(); 
 
   //Assign user input to the task object
+   
     const task = {
-      taskTitle: event.target.tasktitle.value,
-      description: event.target.description.value,
-      currStatus: event.target.status.value
-    
+
+      "title":  document.getElementById('title-input').value,
+      "description": document.getElementById('desc-input').value,
+      "status": getElementById('select-status').value,
+      "board": elements.headerBoardName.textContent
     };
+
     const newTask = createNewTask(task);
     if (newTask) {
       addTaskToUI(newTask);
