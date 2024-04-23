@@ -26,7 +26,8 @@ const elements = {
   hideSideBarBtn: document.getElementById('hide-side-bar-btn'),
   showSideBarBtn: document.getElementById('show-side-bar-btn'),
   themeSwitch: document.getElementById('switch'),
-  createNewTaskBtn: document.getElementById('add-new-task-btn'),
+  addNewTaskBtn: document.getElementById('add-new-task-btn'),
+  createTaskBtn: document.getElementById('createNewTaskBtn'),
   modalWindow: document.querySelector('.modal-window'),
   editTaskModal: document.querySelector('.edit-task-modal-window')
   
@@ -183,11 +184,12 @@ function setupEventListeners() {
   elements.themeSwitch.addEventListener('change', toggleTheme);
 
   // Show Add New Task Modal event listener
-  elements.createNewTaskBtn.addEventListener('click', () => {
+  elements.addNewTaskBtn.addEventListener('click', () => {
     toggleModal(true);
     elements.filterDiv.style.display = 'block'; // Also show the filter overlay
   });
 
+  //create task button 
   
 
   // Add new task form submission event listener
@@ -292,16 +294,15 @@ function saveTaskChanges(taskId) {
   
 
   // Create an object with the updated task details
-  const updatedTask = {
-    id: taskId,
-    title: updatedTitleInput,
-    description: updatedDescriptionInput,
-    status: updatedStatusInput
-  }
-
+  const updates = {};
+  //checking for only updated items
+  if (updatedTitleInput !== '') updates.title = updatedTitleInput;
+  if (updatedDescriptionInput !== '') updates.description = updatedDescriptionInput;
+  if (updatedStatusInput !== '') updates.status = updatedStatusInput;
+  
 
   // Update task using a helper functoin
-  patchTask(taskId,updatedTask);
+  patchTask(taskId,updates);
 
   // Close the modal and refresh the UI to reflect the changes
   toggleModal(false, elements.editTaskModal);
