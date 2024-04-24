@@ -275,7 +275,7 @@ function openEditTaskModal(task) {
   // Call saveTaskChanges upon click of Save Changes button
   saveTaskChangesBtn.addEventListener('click', function saveTask(){
     saveTaskChanges(task.id);
-    saveTaskChangesBtn.removeEventListener('click', saveTask);
+    saveTaskChangesBtn.removeEventListener('click', saveTask); // Remove event listener to avoid duplication
   });
 
   // Delete task using a helper function and close the task modal
@@ -283,7 +283,7 @@ function openEditTaskModal(task) {
     deleteTask(task.id);
     elements.editTaskModal.style.display = 'none'; //close modal
     refreshTasksUI(); // refresh user interface
-    deleteTaskBtn.removeEventListener('click', deleteTask);
+    deleteTaskBtn.removeEventListener('click', deleteTask); //Remove event listener to avoid involuntary deletion of tasks
     
 
   });
