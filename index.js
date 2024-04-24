@@ -273,15 +273,17 @@ function openEditTaskModal(task) {
   const deleteTaskBtn = document.getElementById('delete-task-btn');
 
   // Call saveTaskChanges upon click of Save Changes button
-  saveTaskChangesBtn.addEventListener('click', ()=>{
+  saveTaskChangesBtn.addEventListener('click', function saveTask(){
     saveTaskChanges(task.id);
+    saveTaskChangesBtn.removeEventListener('click', saveTask);
   });
 
   // Delete task using a helper function and close the task modal
-  deleteTaskBtn.addEventListener('click', ()=>{
+  deleteTaskBtn.addEventListener('click', function deleteTask() {
     deleteTask(task.id);
     elements.editTaskModal.style.display = 'none'; //close modal
     refreshTasksUI(); // refresh user interface
+    deleteTaskBtn.removeEventListener('click', deleteTask);
     
 
   });
@@ -299,9 +301,9 @@ function saveTaskChanges(taskId) {
   // Create an object with the updated task details
   const updates = {};
   //checking for only updated items
-  if (updatedTitleInput !== '') updates.title = updatedTitleInput;
-  if (updatedDescriptionInput !== '') updates.description = updatedDescriptionInput;
-  if (updatedStatusInput !== '') updates.status = updatedStatusInput;
+  if (updatedTitleInput !== '') {updates.title = updatedTitleInput;}
+  if (updatedDescriptionInput !== '') {updates.description = updatedDescriptionInput;}
+  if (updatedStatusInput !== '') {updates.status = updatedStatusInput;}
   
 
   // Update task using a helper functoin
