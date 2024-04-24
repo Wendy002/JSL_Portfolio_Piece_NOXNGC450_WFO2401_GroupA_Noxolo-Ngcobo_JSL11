@@ -279,16 +279,21 @@ function openEditTaskModal(task) {
   });
 
   // Delete task using a helper function and close the task modal
-  deleteTaskBtn.addEventListener('click', function deleteTask() {
-    deleteTask(task.id);
-    elements.editTaskModal.style.display = 'none'; //close modal
-    refreshTasksUI(); // refresh user interface
-    deleteTaskBtn.removeEventListener('click', deleteTask); //Remove event listener to avoid involuntary deletion of tasks
-    
+  deleteTaskBtn.disabled = false; // enable the button
+  deleteTaskBtn.addEventListener('click', deleteTaskHandler);
 
-  });
+  function deleteTaskHandler() { // function to handle the problem with involuntary deletion
+    
+    deleteTask(task.id);
+    toggleModal(false, elements.editTaskModal); //close modal
+    elements.filterDiv.style.display = 'none'; 
+    refreshTasksUI(); // refresh user interface
+    deleteTaskBtn.removeEventListener('click', deleteTaskHandler); //Remove event listener
+    deleteTaskBtn.disabled = true; // Disable the button
+  }
 
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
+  elements.filterDiv.style.display = 'block'; 
 }
 
 function saveTaskChanges(taskId) {
