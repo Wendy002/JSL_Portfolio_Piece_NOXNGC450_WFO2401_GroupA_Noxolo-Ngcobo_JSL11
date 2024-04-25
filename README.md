@@ -19,30 +19,27 @@ Additionally, we will enhance the application by crafting code to meet specific 
 
 #### Challenges Faced
 
-- **Responsive Design for Smaller Screens**: Deciding between flexbox and grid can be tricky at times, 
-this was challenging but got to understand why sometimes one layout works better than the other 
-given different elements amd structure of each section.
-- **Styling the hero section get-started section**: It was challenging to place the img element next to text content. 
-The full width was difficult to style as compared to using  specified max-width.
+- **event listener for the cancel , save and delete button**: the task modal buttons some how were sharing the event listener cause actions
+  done in one task caused other tasks to be duplicated with same data or deleted involuntarily.
+
 
 #### Areas for Improvement
 
-- **Advanced CSS Properties**: The learning doesn't stop, I still want to learn more useful css properties, master applying layouts.
-- **Javascript mastery**: This site still has more room for add ons, 
-like create event listeners for the sign up button that directs you to a user sign up page
-- **Code Optimization**:  Code refactoring, use semantic html
-- **Tailwind css darkmode and personalised config file**: Learn more on create accessible webpages that offer dark mode and easy navigation of the pages
+- **Advanced js method**: Leaarning more js methods will improve my coding and problem solving skills
+- **Code Optimization**:  Code refactoring
+- **Debugging**- Practuse more debubbing with code bases that already exist.
+
 
 #### Overall Learning Experience
 
-  This was a great challenge especially because I threw myself in the deep end and didn't rely on lectures given to us. 
-  This helped retain most of the content I was consuming.
+  This was a great challenge , I learnt new methods of debbuging and problem solving.
 
 
 #### Resources used & links to slides, video presentation
 
 ##### Resources:
-- **used AI to assist with bugs and debug my code**-copilot/Meta AI 
+- **used AI to assist with bugs and debug my code**-copilot/Meta Ai
+- **Google**-Used stackoverflow and MDN
 
 ##### Slides, deployed app and Video Presentation
 - **Video presentation**- 
