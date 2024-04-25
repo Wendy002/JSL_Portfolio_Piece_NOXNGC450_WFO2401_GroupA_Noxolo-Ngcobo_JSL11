@@ -42,7 +42,7 @@ Additionally, we will enhance the application by crafting code to meet specific 
 - **Google**-Used stackoverflow and MDN
 
 ##### Slides, deployed app and Video Presentation
-- **Video presentation**- 
+- **Video presentation**- https://www.loom.com/share/ebd4d1ddd14e4e2ea54f4c5611075e22?sid=c5f762aa-feb6-46b5-bf80-03383c3098bc
 
 # Agile Board Project Feature List
 
