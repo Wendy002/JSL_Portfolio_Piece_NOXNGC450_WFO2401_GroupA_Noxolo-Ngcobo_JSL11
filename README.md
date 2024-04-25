@@ -1,57 +1,51 @@
 ### [JSL11] Agile Board - Kanban Task Management App
 
-Welcome to the Agile Board project, the final project for the JSL course! In this portfolio piece project, you will be stepping into the shoes of a juniour developer tasked with bringing a Kanban Task Management App to life. You're not starting from scratch, though. In this project, you are tasked with tackling the provided user stories to both identify and fix bugs in the code, as well as to develop your own functions to extend the application's capabilities. Key assignments include importing utility functions, initializing data, and diving into debugging tasks such as setting up data correctly in local storage, dynamically displaying boards and tasks, and enhancing user interactions.
+# Noxolo Ngcobo 
 
-Additionally, you will enhance the application by crafting code to meet specific functionalities outlined in the user stories, like managing task details and their lifecycle, toggling theme customization, and ensuring the persistence of data through local storage. This blend of debugging and creative coding invites you to apply your critical thinking and problem-solving skills in a hands-on manner, equipping you for the intricacies of real-world software development scenarios.
+### Overview
+ In this project, we are tasked with tackling the provided user stories to both identify and fix bugs in the code, as well as to develop our own functions to extend the application's capabilities. Key assignments include importing utility functions, initializing data, and diving into debugging tasks such as setting up data correctly in local storage, dynamically displaying boards and tasks, and enhancing user interactions.
 
-We're providing you with a head start:
+Additionally, we will enhance the application by crafting code to meet specific functionalities outlined in the user stories, like managing task details and their lifecycle, toggling theme customization, and ensuring the persistence of data through local storage. This blend of debugging and creative coding forces us to apply our critical thinking and problem-solving skills in a hands-on manner, equipping us for the intricacies of real-world software development scenarios.
+### Reflections
 
-- **Starter Code**: You will receive starter code for the user interface (UI) of the application. This includes the basic layout and some of the JavaScript (JS) functionality needed to make the app interactive.
+#### Areas of Mastery
 
-- **Your Mission**: Your main task is to complete the app by implementing the features described in the provided user stories. These stories outline the functionality that users expect from the app, such as adding, editing, and deleting tasks, as well as customizing themes and managing the task lifecycle.
+- **Working import and export functions**:  I feel confident creating and using export funtion and importing them in other files.
+- **Debugging**: Still a bit tricky to work on another persons code base but it  was a huge learning curve .
+- **Event listeners and handlers**: I was able to use eventlisteners effectively on the buttons  and task modals.
+- **Change state of an element**: Used dynamic javascript to implement change of theme from darkMode/light mode.
+- **Use of local storgae**: Used local storage to store, track and mantain tasks.
+- **Use of function**:  used functions and callback functions to make code modular
 
-- **🪲Important Note on Debugging🚨:** In the sections of the project where you are tasked with debugging the code, *it's crucial to focus on identifying and correcting errors within the existing functions rather than undertaking a complete refactoring of the code.* This means you will need to carefully analyze the provided starter code to pinpoint syntax errors, logical mistakes, or any bugs that prevent the application from functioning as intended. **The goal is to improve and repair the codebase by making precise adjustments, ensuring that the original structure, function logic and intended functionality are preserved.** This approach not only aligns with the project's requirements but also hones the essential skill of debugging— a critical competency for any developer.
+#### Challenges Faced
 
-### Walkthrough by Coach Kenneth
+- **Responsive Design for Smaller Screens**: Deciding between flexbox and grid can be tricky at times, 
+this was challenging but got to understand why sometimes one layout works better than the other 
+given different elements amd structure of each section.
+- **Styling the hero section get-started section**: It was challenging to place the img element next to text content. 
+The full width was difficult to style as compared to using  specified max-width.
 
-Jump into the walkthrough of the project and starter code here: https://www.youtube.com/watch?v=aD8Wx9PGYSc
+#### Areas for Improvement
 
-### Project Overview
+- **Advanced CSS Properties**: The learning doesn't stop, I still want to learn more useful css properties, master applying layouts.
+- **Javascript mastery**: This site still has more room for add ons, 
+like create event listeners for the sign up button that directs you to a user sign up page
+- **Code Optimization**:  Code refactoring, use semantic html
+- **Tailwind css darkmode and personalised config file**: Learn more on create accessible webpages that offer dark mode and easy navigation of the pages
 
-As a newly hired developer at Agile Board, a fictional company specializing in innovative task management solutions, you'll embark on an exciting journey to enhance their flagship Kanban Task Management App.
+#### Overall Learning Experience
 
-![alt text](assets/JSL11_solution.gif)
-
-Your journey through this project will involve several key activities:
-
-1. **Exploring the Starter Code**: Begin by familiarizing yourself with the UI and JS functionality we've provided. This will give you a solid understanding of the project's current state and what needs to be done.
-2. **Completing User Stories**: Dive into the user stories, which are your roadmap to completing the project. Each story is a feature or functionality that your app needs to support. Your goal is to write the JS code necessary to bring these stories to life.
-3. **Testing and Debugging**: As you implement each feature, test your app to ensure it works as expected. Debug any issues that arise to ensure a smooth user experience.
-4. **Reflecting on Your Work**: Once you've completed the user stories, take a step back and review your app. Consider the challenges you faced, what you learned, and how you might improve the app further.
-
-This project is designed to be both challenging and rewarding, providing you with hands-on experience in web development. By the end, you'll have a functional Kanban Task Management App that you can showcase in your portfolio. Ready to get started? Let's dive in!
-
-## What You Need to Do:
-
-To complete this challenge, follow these steps:
-
-1. Clone the provided Starter Code Repository to your local development environment: [Starter Code Repository](https://github.com/CodeSpace-Academy/Final_Project_StudentNo_Classcode_Group_Name-Surname_JSL11).
-2. Open the cloned project in your code editor.
-3. Code your solution to the user stories.
-4. Commit your changes to your local Git repository with meaningful commit messages.
-5. Push your local Git repository to your GitHub account.
-6. Verify that the changes have been successfully pushed to your GitHub repository.
-
-🚨 Make sure that you clear the localStorage as you are building your project. This will help with checking that the tasks are loading correctly. 
-
-![alt text](assets/clear-localStorage.gif)
+  This was a great challenge especially because I threw myself in the deep end and didn't rely on lectures given to us. 
+  This helped retain most of the content I was consuming.
 
 
+#### Resources used & links to slides, video presentation
 
-## What You Need to Include:
+##### Resources:
+- **used AI to assist with bugs and debug my code**-copilot/Meta AI 
 
-1. Ensure that your code includes the necessary modifications to meet the challenge requirements.
-2. Your GitHub repository should contain the updated code files.
+##### Slides, deployed app and Video Presentation
+- **Video presentation**- 
 
 # Agile Board Project Feature List
 
