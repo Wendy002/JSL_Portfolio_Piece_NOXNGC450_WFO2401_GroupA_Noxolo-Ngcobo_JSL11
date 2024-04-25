@@ -161,7 +161,9 @@ function addTaskToUI(task) {
 function setupEventListeners() {
   // Cancel editing task event listener
   const cancelEditBtn = document.getElementById('cancel-edit-btn');
-  cancelEditBtn.addEventListener('click', () => {toggleModal(false, elements.editTaskModal)});
+  cancelEditBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleModal(false, elements.editTaskModal)});
 
   // Cancel adding new task event listener
   const cancelAddTaskBtn = document.getElementById('cancel-add-task-btn');
@@ -216,8 +218,8 @@ function addTask(event) {
     const task = {
 
       "title":  document.getElementById('title-input').value,
-      "description": document.getElementById('desc-input').value,   //get values from input fields
-      "status": document.getElementById('select-status').value,    
+      "description": document.getElementById('desc-input').value,
+      "status": document.getElementById('select-status').value,
       "board": elements.headerBoardName.textContent
     };
 
@@ -273,24 +275,24 @@ function openEditTaskModal(task) {
   const deleteTaskBtn = document.getElementById('delete-task-btn');
 
   // Call saveTaskChanges upon click of Save Changes button
-  saveTaskChangesBtn.addEventListener('click', function saveTask(){
+  saveTaskChangesBtn.addEventListener('click', function (e){
+    e.stopPropagation();  //prevent same event being called
     saveTaskChanges(task.id);
-    saveTaskChangesBtn.removeEventListener('click', saveTask); // Remove event listener to avoid duplication
+    //saveTaskChangesBtn.removeEventListener('click', saveTask); // Remove event listener to avoid duplication
   });
 
   // Delete task using a helper function and close the task modal
   deleteTaskBtn.disabled = false; // enable the button
-  deleteTaskBtn.addEventListener('click', deleteTaskHandler);
-
-  function deleteTaskHandler() { // function to handle the problem with involuntary deletion
-    
+  deleteTaskBtn.addEventListener('click', function (e){
+    e.stopPropagation();
     deleteTask(task.id);
     toggleModal(false, elements.editTaskModal); //close modal
     elements.filterDiv.style.display = 'none'; 
     refreshTasksUI(); // refresh user interface
-    deleteTaskBtn.removeEventListener('click', deleteTaskHandler); //Remove event listener
-    deleteTaskBtn.disabled = true; // Disable the button
-  }
+    // deleteTaskBtn.removeEventListener('click', deleteTaskHandler); //Remove event listener
+    // deleteTaskBtn.disabled = true; // Disable the button
+  });
+  
 
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
   elements.filterDiv.style.display = 'block'; 
