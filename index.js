@@ -16,7 +16,7 @@ function initializeData() {
     console.log('Data already exists in localStorage');
   }
 }
-initializeData();
+initializeData(); // fix:  call the function
 
 // TASK: Get elements from the DOM
 const elements = {
@@ -38,13 +38,13 @@ let activeBoard = "";
 // Extracts unique board names from tasks
 // TASK: FIX BUGS
 
-function fetchAndDisplayBoardsAndTasks() {
+function fetchAndDisplayBoardsAndTasks() {      //fix syntax add semi lons too
   const tasks = getTasks();
   const boards = [...new Set(tasks.map(task => task.board).filter(Boolean))];
   displayBoards(boards);
   if (boards.length > 0) {
     const localStorageBoard = JSON.parse(localStorage.getItem("activeBoard"));
-    activeBoard = localStorageBoard ? localStorageBoard :  boards[0]; 
+    activeBoard = localStorageBoard ? localStorageBoard :  boards[0]; // insert : for ternary operator
     elements.headerBoardName.textContent = activeBoard;
     styleActiveBoard(activeBoard);
     refreshTasksUI();
@@ -60,7 +60,7 @@ function displayBoards(boards) {
     const boardElement = document.createElement("button");
     boardElement.textContent = board;
     boardElement.classList.add("board-btn");
-    boardElement.addEventListener('click', () => {   // replace click() with eventListener
+    boardElement.addEventListener('click', () => {   // replace click() with addeventListener
       elements.headerBoardName.textContent = board;
       filterAndDisplayTasksByBoard(board);
       activeBoard = board;//assigns active board
@@ -73,7 +73,7 @@ function displayBoards(boards) {
 }
 const colTitles = {
   todo: 'todo',
-  doing: "doing",
+  doing: "doing",            // column titles before the function below
   done: "done"
 };
 
@@ -88,11 +88,11 @@ function filterAndDisplayTasksByBoard(boardName) {
   elements.columnDivs.forEach(column => {
     const status = column.getAttribute("data-status");
     // Reset column content while preserving the column title
-    const colTitle = colTitles[status];
+    const colTitle = colTitles[status]; // add this to match object with status ib the document
     column.innerHTML = `<div class="column-head-div">
                           <span class="dot" id="${status}-dot"></span>
                           <h4 class="columnHeader">${colTitle.toUpperCase()}</h4>
-                        </div>`;
+                        </div>`;   //replace status with colTitle
 
     const tasksContainer = document.createElement("div");
     column.appendChild(tasksContainer);
@@ -104,7 +104,7 @@ function filterAndDisplayTasksByBoard(boardName) {
       taskElement.setAttribute('data-task-id', task.id);
 
       // Listen for a click event on each task and open a modal
-      taskElement.addEventListener('click', () => { 
+      taskElement.addEventListener('click', () => {   //changed the click() to eventlistener
         openEditTaskModal(task);
       });
 
@@ -121,12 +121,12 @@ function refreshTasksUI() {
 // Style the active board by adding an active class
 // TASK: Fix Bugs
 function styleActiveBoard(boardName) {
-  document.querySelectorAll('.board-btn').forEach(btn => { 
+  document.querySelectorAll('.board-btn').forEach(btn => { // from foreach to forEach
     
     if(btn.textContent === boardName) {
       btn.classList.add('active');
     }
-    else {                              // use classList
+    else {                              // added  .classList
       btn.classList.remove('active'); 
     }
   });
@@ -153,7 +153,7 @@ function addTaskToUI(task) {
   taskElement.textContent = task.title; // Modify as needed
   taskElement.setAttribute('data-task-id', task.id);
   
-  tasksContainer.appendChild(taskElement); 
+  tasksContainer.appendChild(taskElement);  // insert taskElement that you are appending
 }
 
 
@@ -162,7 +162,7 @@ function setupEventListeners() {
   // Cancel editing task event listener
   const cancelEditBtn = document.getElementById('cancel-edit-btn');
   cancelEditBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); //added that
     toggleModal(false, elements.editTaskModal)});
 
   // Cancel adding new task event listener
@@ -203,7 +203,7 @@ function setupEventListeners() {
 // Toggles tasks modal
 // Task: Fix bugs
 function toggleModal(show, modal = elements.modalWindow) {
-  modal.style.display = show ? 'block' : 'none'; 
+  modal.style.display = show ? 'block' : 'none';  //fix this
 }
 
 /*************************************************************************************************************************************************
@@ -273,24 +273,35 @@ function openEditTaskModal(task) {
   // Get button elements from the task modal
   const saveTaskChangesBtn = document.getElementById('save-task-changes-btn');
   const deleteTaskBtn = document.getElementById('delete-task-btn');
+   
+  //remove existing event listeners
+  saveTaskChangesBtn.replaceWith(saveTaskChangesBtn.cloneNode(true));
+  deleteTaskBtn.replaceWith(deleteTaskBtn.cloneNode(true));
+
+  // Re-select the buttons after replacing
+  const newSaveTaskChangesBtn = document.getElementById('save-task-changes-btn');
+  const newDeleteTaskBtn = document.getElementById('delete-task-btn');
+
 
   // Call saveTaskChanges upon click of Save Changes button
-  saveTaskChangesBtn.addEventListener('click', function (e){
+  newSaveTaskChangesBtn.addEventListener('click', function (e){
     e.stopPropagation();  //prevent same event being called
     saveTaskChanges(task.id);
-    //saveTaskChangesBtn.removeEventListener('click', saveTask); // Remove event listener to avoid duplication
+    toggleModal(false, elements.editTaskModal);
+    elements.filterDiv.style.display = 'none';
+    refreshTasksUI();
+  
   });
 
   // Delete task using a helper function and close the task modal
-  deleteTaskBtn.disabled = false; // enable the button
-  deleteTaskBtn.addEventListener('click', function (e){
+ 
+  newDeleteTaskBtn.addEventListener('click', function (e){
     e.stopPropagation();
     deleteTask(task.id);
     toggleModal(false, elements.editTaskModal); //close modal
     elements.filterDiv.style.display = 'none'; 
     refreshTasksUI(); // refresh user interface
-    // deleteTaskBtn.removeEventListener('click', deleteTaskHandler); //Remove event listener
-    // deleteTaskBtn.disabled = true; // Disable the button
+
   });
   
 
